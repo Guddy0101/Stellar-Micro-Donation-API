@@ -366,12 +366,8 @@ router.patch('/:name', checkPermission(PERMISSIONS.ADMIN_ALL), updateFlagSchema,
     }
 
     const { name } = req.params;
-    const { scope, scope_value } = req.query;
+    const { scope = 'global', scope_value } = req.query;
     const { enabled, description } = req.body;
-
-    if (!scope) {
-      throw new ValidationError('scope query parameter is required', { field: 'scope' });
-    }
 
     // Get existing flag
     const existing = await featureFlagsUtil.getFlag(name, scope, scope_value);

@@ -23,6 +23,7 @@ const { validateSchema } = require('../middleware/schemaValidation');
 const { cacheMiddleware } = require('../middleware/caching');
 const { validateDataEntry } = require('../middleware/validateDataEntry');
 const { toWalletResponse } = require('../utils/responseSanitizer');
+const BulkWalletImportService = require('../services/BulkWalletImportService');
 
 const requireAuth = requireAdmin;
 const requirePermission = (perm) => checkPermission(perm);

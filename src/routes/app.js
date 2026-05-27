@@ -476,6 +476,9 @@ app.get('/suspicious-patterns', require('../middleware/rbac').requireAdmin(), (r
   });
 });
 
+// API key usage analytics (issue #931)
+app.use('/admin/api-keys/usage', require('./admin/apiKeyUsage'));
+
 // Feature flags admin UI + API (issue #807)
 app.use('/admin/feature-flags', requireApiKey, featureFlagsAdminRoutes);
 
